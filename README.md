@@ -1,8 +1,9 @@
-# Alarm web app 
+# Alarm web app
 
-Alarm web app. Built with Vue JS
+Alarm web app. Built with Vue in TypeScript. Includes state management.
 
-Yarn with Node v24.20.0
+Yarn v1.22.22
+Node v24.20.0
 
 This template should help get you started developing with Vue 3 in Vite.
 
