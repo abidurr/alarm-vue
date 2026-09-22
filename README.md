@@ -7,6 +7,8 @@ Node v24.20.0
 
 This template should help get you started developing with Vue 3 in Vite.
 
+To run the local server use `yarn dev`.
+
 ## Recommended IDE Setup
 
 [VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
