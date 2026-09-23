@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useAlarmsStore } from '@/stores/alarms'
 import { v4 as uuidv4 } from 'uuid'
-import { CTimePicker } from '@coreui/vue-pro'
+// import { CTimePicker } from '@coreui/vue-pro'
 import { CFormInput } from '@coreui/vue'
 import { ref } from 'vue'
 
@@ -18,17 +18,7 @@ const label = ref(`My Alarm ${alarms.alarms.length + 1}`)
     <h1 style="width: 100%; text-align: center">Alarms</h1>
     <div class="inputdiv">
       <div>
-        <p style="margin-bottom: 0px">Time</p>
-        <input
-          type="time"
-          style="width: 200px"
-          locale="en-US"
-          v-model="time_input"
-          id="time_input"
-        />
-      </div>
-      <div>
-        <p style="margin-bottom: 0px">Label</p>
+        <p style="margin: 0px">Label</p>
         <CFormInput
           style="width: 200px; height: 24px"
           type="text"
@@ -37,8 +27,19 @@ const label = ref(`My Alarm ${alarms.alarms.length + 1}`)
           v-model="label"
         />
       </div>
+      <div>
+        <p style="margin: 0px">Time</p>
+        <input
+          type="time"
+          style="width: 200px"
+          locale="en-US"
+          v-model="time_input"
+          id="time_input"
+        />
+      </div>
+
       <button
-        style="height: 36px; margin-top: 14px; border-radius: 8px"
+        style="height: 36px; margin-top: 40px; border-radius: 8px"
         @click="
           () => {
             alarms.addAlarm({
@@ -57,7 +58,9 @@ const label = ref(`My Alarm ${alarms.alarms.length + 1}`)
       </button>
     </div>
     <div class="single-alarm" v-for="alarm in alarms.alarms" :key="alarm.id">
-      {{ alarm.order + 1 }}. {{ alarm.label }} at {{ alarm.time }}
+      <span class="mono-font" style="font-weight: 600">{{ alarm.order + 1 }}.</span>
+      <span style="font-style: italic">{{ alarm.label }}</span> at
+      <span class="mono-font" style="font-weight: 600">{{ alarm.time }}</span>
     </div>
   </div>
 </template>
