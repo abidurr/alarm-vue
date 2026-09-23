@@ -6,8 +6,8 @@ import { CFormInput } from '@coreui/vue'
 import { ref } from 'vue'
 
 import moment from 'moment-timezone'
-import '@coreui/coreui/dist/css/coreui.min.css'
-import '@coreui/coreui-pro/dist/css/coreui.min.css'
+// import '@coreui/coreui/dist/css/coreui.min.css'
+// import '@coreui/coreui-pro/dist/css/coreui.min.css'
 const alarms = useAlarmsStore()
 const time_input = ref(moment().format('HH:mm:ss'))
 const label = ref(`My Alarm ${alarms.alarms.length + 1}`)
@@ -18,19 +18,19 @@ const label = ref(`My Alarm ${alarms.alarms.length + 1}`)
     <h1 style="width: 100%; text-align: center">Alarms</h1>
     <div class="inputdiv">
       <div>
-        <p style="margin-bottom: 0px">Time: {{ time_input }}</p>
-        <CTimePicker
+        <p style="margin-bottom: 0px">Time</p>
+        <input
+          type="time"
           style="width: 200px"
           locale="en-US"
           v-model="time_input"
           id="time_input"
-          v-on:change="(time) => (time_input = moment(new Date(time)).format('HH:mm:ss'))"
         />
       </div>
       <div>
         <p style="margin-bottom: 0px">Label</p>
         <CFormInput
-          style="width: 200px"
+          style="width: 200px; height: 24px"
           type="text"
           placeholder="My Alarm"
           id="label"
@@ -38,6 +38,7 @@ const label = ref(`My Alarm ${alarms.alarms.length + 1}`)
         />
       </div>
       <button
+        style="height: 36px; margin-top: 14px; border-radius: 8px"
         @click="
           () => {
             alarms.addAlarm({
@@ -56,7 +57,7 @@ const label = ref(`My Alarm ${alarms.alarms.length + 1}`)
       </button>
     </div>
     <div class="single-alarm" v-for="alarm in alarms.alarms" :key="alarm.id">
-      {{ alarm.label }} at {{ alarm.time }}
+      {{ alarm.order + 1 }}. {{ alarm.label }} at {{ alarm.time }}
     </div>
   </div>
 </template>
@@ -66,7 +67,7 @@ const label = ref(`My Alarm ${alarms.alarms.length + 1}`)
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 0px;
+  padding: 40px 0px;
   margin: 0px;
 }
 .single-alarm {
