@@ -58,11 +58,13 @@ const label = ref(`My Alarm ${alarms.alarms.length + 1}`)
       </button>
     </div>
     <div class="single-alarm" v-for="alarm in alarms.alarms" :key="alarm.id">
-      <span class="mono-font" style="font-weight: 600">{{ alarm.order }}.</span>
-      <span style="font-style: italic">{{ alarm.label }}</span> at
-      <span class="mono-font" style="font-weight: 600">{{ alarm.time }}</span>
+      <span class="mono-font" style="font-weight: 600; margin-top: 4px">{{ alarm.order }}.</span>
+      <div>
+        <span style="font-style: italic; align-content: baseline">{{ alarm.label }}</span> at
+        <span class="mono-font" style="font-weight: 600">{{ alarm.time }}</span>
+      </div>
       <button
-        style="margin-left: 16px"
+        style="margin-left: 16px; border-radius: 50%"
         class="mono-font"
         @click="() => alarms.removeAlarm(alarm.id)"
       >
@@ -81,12 +83,17 @@ const label = ref(`My Alarm ${alarms.alarms.length + 1}`)
   margin: 0px;
 }
 .single-alarm {
+  display: flex;
+  justify-content: space-between;
   background: black;
-  border-radius: 16px;
+  border-radius: 24px;
   margin: 12px 0px;
-  padding: 12px 0px;
+  padding: 12px 36px;
   text-align: center;
-  color: white;
+  color: ghostwhite;
+  box-shadow:
+    0 4px 6px rgba(50, 50, 200, 0.7),
+    0 5px 15px rgba(5, 5, 20, 0.1);
 }
 
 @media (min-width: 1024px) {
