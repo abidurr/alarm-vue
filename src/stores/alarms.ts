@@ -11,7 +11,7 @@ interface IAlarm {
 
 export const useAlarmsStore = defineStore('alarms', () => {
   const alarms = ref([
-    { order: 0, id: 'shagudhaskjdkajs', time: moment().format('HH:mm'), label: 'My Label 1' },
+    { order: 1, id: 'shagudhaskjdkajs', time: moment().format('HH:mm'), label: 'My Label 1' },
   ] as IAlarm[])
   const length = computed(() => alarms.value.length)
 
