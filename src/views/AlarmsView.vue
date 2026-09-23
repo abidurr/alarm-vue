@@ -58,9 +58,16 @@ const label = ref(`My Alarm ${alarms.alarms.length + 1}`)
       </button>
     </div>
     <div class="single-alarm" v-for="alarm in alarms.alarms" :key="alarm.id">
-      <span class="mono-font" style="font-weight: 600">{{ alarm.order + 1 }}.</span>
+      <span class="mono-font" style="font-weight: 600">{{ alarm.order }}.</span>
       <span style="font-style: italic">{{ alarm.label }}</span> at
       <span class="mono-font" style="font-weight: 600">{{ alarm.time }}</span>
+      <button
+        style="margin-left: 16px"
+        class="mono-font"
+        @click="() => alarms.removeAlarm(alarm.id)"
+      >
+        X
+      </button>
     </div>
   </div>
 </template>
