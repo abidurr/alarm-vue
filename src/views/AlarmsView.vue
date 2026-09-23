@@ -1,10 +1,83 @@
+<script setup lang="ts">
+import { useAlarmsStore } from '@/stores/alarms'
+import { v4 as uuidv4 } from 'uuid'
+import { CTimePicker } from '@coreui/vue-pro'
+import { CFormInput } from '@coreui/vue'
+import { ref } from 'vue'
+
+import moment from 'moment-timezone'
+import '@coreui/coreui/dist/css/coreui.min.css'
+import '@coreui/coreui-pro/dist/css/coreui.min.css'
+const alarms = useAlarmsStore()
+const time_input = ref(moment().format('HH:mm:ss'))
+const label = ref(`My Alarm ${alarms.alarms.length + 1}`)
+</script>
+
 <template>
   <div class="wrapper">
-    <h1>Alarms</h1>
+    <h1 style="width: 100%; text-align: center">Alarms</h1>
+    <div class="inputdiv">
+      <div>
+        <p style="margin-bottom: 0px">Time: {{ time_input }}</p>
+        <CTimePicker
+          style="width: 200px"
+          locale="en-US"
+          v-model="time_input"
+          id="time_input"
+          v-on:change="(time) => (time_input = moment(new Date(time)).format('HH:mm:ss'))"
+        />
+      </div>
+      <div>
+        <p style="margin-bottom: 0px">Label</p>
+        <CFormInput
+          style="width: 200px"
+          type="text"
+          placeholder="My Alarm"
+          id="label"
+          v-model="label"
+        />
+      </div>
+      <button
+        @click="
+          () => {
+            alarms.addAlarm({
+              label: label,
+              id: uuidv4(),
+              time: time_input,
+              order: alarms.alarms.length + 1,
+            })
+
+            label = `My Alarm ${alarms.alarms.length + 1}`
+            time_input = `00:00`
+          }
+        "
+      >
+        Add Alarm
+      </button>
+    </div>
+    <div class="single-alarm" v-for="alarm in alarms.alarms" :key="alarm.id">
+      {{ alarm.label }} at {{ alarm.time }}
+    </div>
   </div>
 </template>
 
 <style>
+.inputdiv {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0px;
+  margin: 0px;
+}
+.single-alarm {
+  background: black;
+  border-radius: 16px;
+  margin: 12px 0px;
+  padding: 12px 0px;
+  text-align: center;
+  color: white;
+}
+
 @media (min-width: 1024px) {
   .about {
     min-height: 100vh;
