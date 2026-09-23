@@ -12,13 +12,15 @@
     "lint": "run-s \"lint:*\"",
     "lint:oxlint": "oxlint . --fix",
     "lint:eslint": "eslint . --fix --cache",
-    "format": "prettier --write --experimental-cli src/"
+    "format": "prettier --write --experimental-cli src/",
+    "deploy": "vite build && gh-pages -d dist"
   },
   "dependencies": {
     "@coreui/coreui": "^5.9.0",
     "@coreui/coreui-pro": "^5.27.1",
     "@coreui/vue": "^5.10.0",
     "@coreui/vue-pro": "^5.21.1",
+    "gh-pages": "^6.3.0",
     "howler": "^2.2.4",
     "moment-timezone": "^0.6.4",
     "pinia": "^4.0.3",
