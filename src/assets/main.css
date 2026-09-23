@@ -1,10 +1,17 @@
 @import './base.css';
+@import url('https://fonts.googleapis.com/css2?family=Bentham&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 
 #app {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
+  font-size: 26px;
   font-weight: normal;
+  font-family: 'Bentham', sans-serif;
+  .mono-font {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px;
+  }
 }
 
 a,
