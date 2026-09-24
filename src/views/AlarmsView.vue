@@ -49,8 +49,8 @@ const label = ref(`My Alarm ${alarms.alarms.length + 1}`)
               order: alarms.alarms.length + 1,
             })
 
-            label = `My Alarm ${alarms.alarms.length + 1}`
-            time_input = `00:00`
+            label = `Alarm ${alarms.alarms.length + 1}`
+            // time_input = `00:00:00`
           }
         "
       >
