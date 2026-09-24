@@ -6,11 +6,25 @@ import { CFormInput } from '@coreui/vue'
 import { ref } from 'vue'
 
 import moment from 'moment-timezone'
+import { Howl } from 'howler'
+// import chime1 from '@/assets/chime1.mp3'
 // import '@coreui/coreui/dist/css/coreui.min.css'
 // import '@coreui/coreui-pro/dist/css/coreui.min.css'
 const alarms = useAlarmsStore()
 const time_input = ref(moment().format('HH:mm:ss'))
-const label = ref(`My Alarm ${alarms.alarms.length + 1}`)
+const label = ref(`Alarm ${alarms.alarms.length + 1}`)
+
+// alarms.$subscribe(
+//   (mutation, state) => {
+//     // persist the whole state to the local storage whenever it changes
+//     localStorage.setItem('alarms', JSON.stringify(state))
+//   },
+//   { flush: 'sync' },
+// )
+
+// export function playSound() {
+//   new Howl({ src: ['@/assets/chime1.mp3'] }).play()
+// }
 </script>
 
 <template>
@@ -18,7 +32,7 @@ const label = ref(`My Alarm ${alarms.alarms.length + 1}`)
     <h1 style="width: 100%; text-align: center">Alarms</h1>
     <div class="inputdiv">
       <div>
-        <p style="margin: 0px">Label</p>
+        <p style="margin: 0px; padding: 0px; line-height: 1; font-size: 24px">Label</p>
         <CFormInput
           style="width: 200px; height: 24px"
           type="text"
@@ -28,7 +42,7 @@ const label = ref(`My Alarm ${alarms.alarms.length + 1}`)
         />
       </div>
       <div>
-        <p style="margin: 0px">Time</p>
+        <p style="margin: 0px; padding: 0px; line-height: 1; font-size: 24px">Time</p>
         <input
           type="time"
           style="width: 200px"
@@ -39,7 +53,7 @@ const label = ref(`My Alarm ${alarms.alarms.length + 1}`)
       </div>
 
       <button
-        style="height: 36px; margin-top: 40px; border-radius: 8px"
+        style="height: 36px; margin-top: 12px; border-radius: 8px"
         @click="
           () => {
             alarms.addAlarm({
@@ -65,7 +79,7 @@ const label = ref(`My Alarm ${alarms.alarms.length + 1}`)
       </div>
       <button
         style="margin-left: 16px; border-radius: 50%"
-        class="mono-font"
+        class="mono-font close-button"
         @click="() => alarms.removeAlarm(alarm.id)"
       >
         X
