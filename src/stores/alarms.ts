@@ -10,10 +10,14 @@ interface IAlarm {
   label: string
 }
 
+const DEFAULT_ALARMS = [
+  { order: 1, id: uuidv4(), time: moment().format('HH:mm:ss'), label: 'Alarm 1' },
+] as IAlarm[]
+
 export const useAlarmsStore = defineStore('alarms', () => {
-  const alarms = ref([
-    { order: 1, id: uuidv4(), time: moment().format('HH:mm:ss'), label: 'My Label 1' },
-  ] as IAlarm[])
+  // import local storage state
+  // const storedAlarms = localStorage.getItem('alarms')
+  const alarms = ref(DEFAULT_ALARMS)
   const length = computed(() => alarms.value.length)
 
   function addAlarm(alarm: IAlarm) {
