@@ -6,25 +6,10 @@ import { CFormInput } from '@coreui/vue'
 import { ref } from 'vue'
 
 import moment from 'moment-timezone'
-import { Howl } from 'howler'
-// import chime1 from '@/assets/chime1.mp3'
-// import '@coreui/coreui/dist/css/coreui.min.css'
-// import '@coreui/coreui-pro/dist/css/coreui.min.css'
+
 const alarms = useAlarmsStore()
 const time_input = ref(moment().format('HH:mm:ss'))
 const label = ref(`Alarm ${alarms.alarms.length + 1}`)
-
-// alarms.$subscribe(
-//   (mutation, state) => {
-//     // persist the whole state to the local storage whenever it changes
-//     localStorage.setItem('alarms', JSON.stringify(state))
-//   },
-//   { flush: 'sync' },
-// )
-
-// export function playSound() {
-//   new Howl({ src: ['@/assets/chime1.mp3'] }).play()
-// }
 </script>
 
 <template>
