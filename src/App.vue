@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
+import { useAlarmScheduler } from '@/composables/useAlarmScheduler'
 
-// import { RouterLink } from 'vue-router'
-// import HelloWorld from './components/HelloWorld.vue'
+useAlarmScheduler()
 </script>
 
 <template>
