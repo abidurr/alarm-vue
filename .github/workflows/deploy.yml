@@ -7,28 +7,28 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # - name: Checkout repository
-      #   uses: actions/checkout@v3
-      # - name: Set up Node.js
-      #   uses: actions/setup-node@v4
-      #   with:
-      #     node-version: '24'
-      # - name: Install dependencies
-      #   run: npm install
-      # - name: Build app
-      #   run: npm run build
-      - name: Checkout 🛎️
-        uses: actions/checkout@master
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          persist-credentials: false
+          node-version: '24'
+      - name: Install dependencies
+        run: npm install
+      - name: Build app
+        run: npm run build
+      # - name: Checkout 🛎️
+      #   uses: actions/checkout@master
+      #   with:
+      #     persist-credentials: false
 
-      - name: Install 🔧
-        run: yarn install
+      # - name: Install 🔧
+      #   run: yarn install
 
-      - name: Build 🏗️
-        run: yarn build
-        env:
-          NODE_ENV: production
+      # - name: Build 🏗️
+      #   run: yarn build
+      #   env:
+      #     NODE_ENV: production
 
       - name: Deploy to GH Pages 🚀
         if: ${{ github.event_name != 'pull_request' }}
