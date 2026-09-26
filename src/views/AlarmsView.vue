@@ -45,7 +45,7 @@ const timeToAlarm = (time: string): number => {
       </div>
 
       <button
-        style="height: 36px; margin-top: 12px; border-radius: 8px"
+        style="height: 36px; margin-top: 14px; border-radius: 8px"
         @click="
           () => {
             alarms.addAlarm({
@@ -83,6 +83,10 @@ const timeToAlarm = (time: string): number => {
 </template>
 
 <style>
+input {
+  font-size: 20px;
+  min-height: 32px;
+}
 .inputdiv {
   display: flex;
   align-items: center;
