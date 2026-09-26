@@ -17,11 +17,21 @@ const timeToAlarm = (time: string): number => {
   const timeToAlarm = moment(time, 'HH:mm:ss').diff(moment(), 'seconds')
   return (SECONDS_PER_DAY - timeToAlarm) / SECONDS_PER_DAY
 }
+
+// Current time in reactive state
+const current_time = ref(moment().format('HH:mm:ss'))
+
+setInterval(() => {
+  current_time.value = moment().format('HH:mm:ss')
+  return
+}, 1000)
 </script>
 
 <template>
   <div class="wrapper">
     <h1 style="width: 100%; text-align: center">Alarms</h1>
+
+    <p style="width: 100%; text-align: center; font-size: 32px; opacity: 0.8">{{ current_time }}</p>
     <div class="inputdiv">
       <div>
         <p style="margin: 0px; padding: 0px; line-height: 1; font-size: 24px">Label</p>
