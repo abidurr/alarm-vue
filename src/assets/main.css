@@ -28,8 +28,10 @@ button {
     0 4px 6px rgba(50, 50, 200, 0.7),
     0 5px 15px rgba(5, 5, 20, 0.1);
   transition: all 0.3s ease-in-out;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
   &:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
   }
 }
 
@@ -40,8 +42,6 @@ a,
   transition: 0.4s;
   padding: 3px;
 }
-
-
 
 @media (hover: hover) {
   a:hover {
