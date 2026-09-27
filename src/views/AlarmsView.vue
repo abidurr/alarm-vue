@@ -11,10 +11,11 @@ const alarms = useAlarmsStore()
 const time_input = ref(moment().format('HH:mm:ss'))
 const label = ref(`Alarm ${alarms.alarms.length + 1}`)
 
-const SECONDS_PER_DAY = 24 * 3600
+const SECONDS_PER_DAY = 24 * 60 * 60
 
 const timeToAlarm = (time: string): number => {
   const timeToAlarm = moment(time, 'HH:mm:ss').diff(moment(), 'seconds')
+  if (timeToAlarm < 0) return 0
   return (SECONDS_PER_DAY - timeToAlarm) / SECONDS_PER_DAY
 }
 
