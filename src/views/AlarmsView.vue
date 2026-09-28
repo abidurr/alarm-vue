@@ -19,6 +19,16 @@ const timeToAlarm = (time: string): number => {
   return (SECONDS_PER_DAY - timeToAlarm) / SECONDS_PER_DAY
 }
 
+// Find the alarm that's closest to the current time
+const nextAlarm = () => {
+  const sortedAlarms = alarms.alarms
+    .map((item) => item)
+    .filter((alarm) => timeToAlarm(alarm.time) > 0)
+    .sort((a, b) => timeToAlarm(b.time) - timeToAlarm(a.time))
+  if (sortedAlarms.length === 0) return
+  return sortedAlarms[0]
+}
+
 // Current time in reactive state
 const current_time = ref(moment().format('HH:mm:ss'))
 
@@ -33,6 +43,11 @@ setInterval(() => {
     <h1 style="width: 100%; text-align: center">Alarms</h1>
 
     <p style="width: 100%; text-align: center; font-size: 32px; opacity: 0.8">{{ current_time }}</p>
+    <p v-if="nextAlarm()" style="width: 100%; text-align: center; font-size: 24px; opacity: 0.8">
+      The next alarm is in
+      {{ moment(nextAlarm()?.time, 'HH:mm:ss').diff(moment(), 'minutes') }} minutes at
+      {{ nextAlarm()?.time }}
+    </p>
     <div class="inputdiv">
       <div>
         <p style="margin: 0px; padding: 0px; line-height: 1; font-size: 24px">Label</p>
